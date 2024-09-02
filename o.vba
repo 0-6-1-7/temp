@@ -11,7 +11,7 @@ Dim Counter As Long
     Set FolderSentMail = oNamespace.GetDefaultFolder(olFolderSentMail)
     Counter = 1
     For Each MailItem In FolderSentMail.Items
-        MailItem.SaveAs Environ("TEMP") & "\" & Trim(Str(Counter)) & ".msg", olMSG 'óêàçàòü ïóòü ê ñâîåé ïàïêå äëÿ ñîõðàíåíèÿ ôàéëîâ
+        MailItem.SaveAs Environ("TEMP") & "\" & Trim(Str(Counter)) & ".msg", olMSG 'указать путь к своей папке для сохранения файлов
         Counter = Counter + 1
     Next MailItem
 End Sub
@@ -28,10 +28,10 @@ Dim FileFolder As Object
 Dim ff As Object
  
     Set FSO = CreateObject("Scripting.FileSystemObject")
-    Set FileFolder = FSO.getfolder(Environ("TEMP")) 'óêàçàòü ïóòü ê ñâîåé ïàïêå ñ ñîõðàí¸ííûìè ôàéëàìè
+    Set FileFolder = FSO.getfolder(Environ("TEMP")) 'указать путь к своей папке с сохранёнными файлами
     
     Set oNamespace = Application.GetNamespace("MAPI")
-    Set FolderSentMail = oNamespace.GetDefaultFolder(olFolderSentMail) 'èëè äðóãàÿ ïàïêà
+    Set FolderSentMail = oNamespace.GetDefaultFolder(olFolderSentMail) 'или другая папка
     On Error Resume Next
         FolderSentMail.Folders.Add ("Imported")
     On Error GoTo 0
